@@ -1,22 +1,23 @@
 {
   "header": {
-    "title": "Système de gestion des stocks",
+    "title": "Application de Chat",
     "profile": "Profil",
     "login": "Se connecter",
     "signup": "S'inscrire",
     "logout": "Se déconnecter",
     "home": "Accueil",
-    "products": "Produits",
-    "warehouses": "Entrepôts"
+    "chats": "Discussions",
+    "contacts": "Contacts",
+    "settings": "Paramètres"
   },
   "home page": {
-    "welcome": "Bienvenue dans",
-    "description": "Gérez efficacement et de manière optimale vos utilisateurs, produits et entrepôts."
+    "welcome": "Bienvenue sur l'Application de Chat",
+    "description": "Connectez-vous avec des amis et discutez instantanément."
   },
   "footer": {
-    "copyright": "Copyright © 2025 Système de gestion des stocks. Tous droits réservés.",
+    "copyright": "Droits d'auteur © 2025 Application de Chat. Tous droits réservés.",
     "contact": "Contactez-nous",
     "privacy": "Politique de confidentialité",
     "terms": "Conditions d'utilisation"
   }
-}  
+}

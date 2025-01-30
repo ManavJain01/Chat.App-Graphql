@@ -1,7 +1,7 @@
 import { Box, Stack } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
 import React, { useContext } from "react";
 import styles from "./Basic.module.css";
 import { ThemeContext } from "../ThemeContext";

@@ -5,10 +5,10 @@ import { useTranslation } from "react-i18next";
 import { useAppSelector } from "../store/store";
 import { motion } from "framer-motion";
 
-// Feature icons (you can replace these with your own icons)
-import BrushIcon from "@mui/icons-material/Brush";
-import ColorLensIcon from "@mui/icons-material/ColorLens";
-import LayersIcon from "@mui/icons-material/Layers";
+// Feature icons
+import ChatIcon from "@mui/icons-material/Chat";
+import GroupIcon from "@mui/icons-material/Group";
+import SecurityIcon from "@mui/icons-material/Security";
 
 const HomePage: React.FC = () => {
   const { t } = useTranslation();
@@ -25,7 +25,6 @@ const HomePage: React.FC = () => {
         gap: 4,
         textAlign: "center",
         p: 3,
-        // background: "linear-gradient(135deg, #6E7E8D, #D9D6D2)", // Subtle gradient background
       }}
     >
       {/* Hero Section with Animated Heading */}
@@ -58,8 +57,8 @@ const HomePage: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
           >
-            <BrushIcon sx={{ fontSize: 40, color: "#6E7E8D" }} />
-            <Typography variant="body1">Brush Tool</Typography>
+            <ChatIcon sx={{ fontSize: 50, color: "#1976D2" }} />
+            <Typography variant="body1">Real-time Messaging</Typography>
           </motion.div>
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -68,8 +67,8 @@ const HomePage: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
           >
-            <ColorLensIcon sx={{ fontSize: 40, color: "#6E7E8D" }} />
-            <Typography variant="body1">Color Palette</Typography>
+            <GroupIcon sx={{ fontSize: 50, color: "#388E3C" }} />
+            <Typography variant="body1">Group Chats</Typography>
           </motion.div>
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -78,8 +77,8 @@ const HomePage: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.8 }}
           >
-            <LayersIcon sx={{ fontSize: 40, color: "#6E7E8D" }} />
-            <Typography variant="body1">Layering</Typography>
+            <SecurityIcon sx={{ fontSize: 50, color: "#D32F2F" }} />
+            <Typography variant="body1">End-to-End Encryption</Typography>
           </motion.div>
         </Grid>
       </Grid>
@@ -90,8 +89,8 @@ const HomePage: React.FC = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 1 }}
       >
-        <Button variant="outlined" component={Link} to="/drawing">
-          Start Drawing
+        <Button variant="contained" color="primary" component={Link} to="/chat">
+          Start Chatting
         </Button>
       </motion.div>
 
@@ -102,7 +101,12 @@ const HomePage: React.FC = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 1.2 }}
         >
-          <Button variant="outlined" component={Link} to="/signup">
+          <Button
+            variant="outlined"
+            color="secondary"
+            component={Link}
+            to="/signup"
+          >
             Get Started
           </Button>
         </motion.div>

@@ -19,6 +19,7 @@ import NotFoundPage from "./pages/notfoundpage";
 import LazyComponent from "./components/LazyComponent";
 import AllUsersPage from "./pages/alluserspage";
 const ProfilePage = React.lazy(() => import("./pages/profilepage"));
+const ChattingPage = React.lazy(() => import("./pages/chattingpage"));
 
 const App: React.FC = () => {
   // useSelector
@@ -75,6 +76,15 @@ const App: React.FC = () => {
               }
             />
           </Route>
+
+          <Route
+            path="/chat"
+            element={
+              <LazyComponent>
+                <ChattingPage />
+              </LazyComponent>
+            }
+          />
         </Route>
 
         {/* 404 Not Found Route */}

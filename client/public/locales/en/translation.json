@@ -1,20 +1,21 @@
 {
   "header": {
-    "title": "Inventory Management System",
+    "title": "Chat Application",
     "profile": "Profile",
     "login": "Login",
     "signup": "Signup",
     "logout": "Logout",
     "home": "Home",
-    "products": "Products",
-    "warehouses": "Warehouses"
+    "chats": "Chats",
+    "contacts": "Contacts",
+    "settings": "Settings"
   },
   "home page": {
-    "welcome": "Welcome",
-    "description": "This is an internationalized React project."
+    "welcome": "Welcome to the Chat App",
+    "description": "Connect with friends and chat instantly."
   },
   "footer": {
-    "copyright": "Copyright © 2025 Inventory Management System. All rights reserved.",
+    "copyright": "Copyright © 2025 Chat Application. All rights reserved.",
     "contact": "Contact Us",
     "privacy": "Privacy Policy",
     "terms": "Terms of Use"

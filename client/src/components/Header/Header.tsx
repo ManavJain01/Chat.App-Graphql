@@ -11,12 +11,12 @@ import {
   Menu,
   MenuItem,
 } from "@mui/material";
-import { ThemeContext } from "../ThemeContext";
-import { ReactComponent as Logo } from "../../public/vite.svg";
+import { ThemeContext } from "../../ThemeContext";
+import { ReactComponent as Logo } from "../../../public/vite.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../store/store";
-import { resetTokens, logoutUser } from "../store/reducers/authReducer";
+import { useAppDispatch, useAppSelector } from "../../store/store";
+import { resetTokens, logoutUser } from "../../store/reducers/authReducer";
 import { motion } from "framer-motion";
 
 const Header: React.FC = () => {
@@ -100,7 +100,7 @@ const Header: React.FC = () => {
           >
             <Logo width={30} height={30} />
           </motion.div>
-          <Typography variant="h6">Drawing App</Typography>
+          <Typography variant="h6">Chatting App</Typography>
         </Link>
 
         <div style={{ display: "flex", gap: "15px", alignItems: "center" }}>
@@ -148,8 +148,8 @@ const Header: React.FC = () => {
           )}
 
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            <Link to="/drawing" color="inherit">
-              Drawing
+            <Link to="/chat" color="inherit">
+              Chat with Friends
             </Link>
           </motion.div>
 

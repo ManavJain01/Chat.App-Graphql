@@ -1,20 +1,21 @@
 {
   "header": {
-    "title": "Sistema de Gestión de Inventarios",
+    "title": "Aplicación de Chat",
     "profile": "Perfil",
     "login": "Iniciar sesión",
     "signup": "Registrarse",
     "logout": "Cerrar sesión",
     "home": "Inicio",
-    "products": "Productos",
-    "warehouses": "Almacenes"
+    "chats": "Chats",
+    "contacts": "Contactos",
+    "settings": "Configuración"
   },
   "home page": {
-    "welcome": "Bienvenido",
-    "description": "Este es un proyecto React internacionalizado."
+    "welcome": "Bienvenido a la Aplicación de Chat",
+    "description": "Conéctate con amigos y chatea al instante."
   },
   "footer": {
-    "copyright": "Copyright © 2025 Sistema de Gestión de Inventarios. Todos los derechos reservados.",
+    "copyright": "Derechos de autor © 2025 Aplicación de Chat. Todos los derechos reservados.",
     "contact": "Contáctanos",
     "privacy": "Política de privacidad",
     "terms": "Términos de uso"
