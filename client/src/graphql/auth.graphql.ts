@@ -22,7 +22,6 @@ const SIGN_UP = gql`
 
 export const useSignUp = () => {
   const dispatch = useAppDispatch();
-  
   return useMutation(SIGN_UP, {
     onCompleted: (data) => {
       // Dispatch user and tokens to Redux store

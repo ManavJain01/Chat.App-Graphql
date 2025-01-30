@@ -78,7 +78,7 @@ const App: React.FC = () => {
           </Route>
 
           <Route
-            path="/chat"
+            path="/chat/:id?"
             element={
               <LazyComponent>
                 <ChattingPage />

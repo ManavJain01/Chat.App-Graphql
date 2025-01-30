@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, TextField, IconButton, Stack } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import Message from "./Message";
+import { useAppSelector } from "../../store/store";
 
 const messagesData = [
   { id: 1, text: "Hey! How are you?", sender: "friend" },
@@ -10,10 +11,30 @@ const messagesData = [
 ];
 
 export default function Messages() {
+  // useSelector
+  const authData = useAppSelector((state) => state.auth);
+
+  // useState
   const [messages, setMessages] = useState(messagesData);
   const [newMessage, setNewMessage] = useState("");
 
-  const handleSendMessage = () => {
+  // useEffect
+  useEffect(() => {
+    if (authData) {
+      fetchMessages();
+    }
+  }, []);
+
+  // Functions
+
+  /**
+   * Handle sending a new message
+   * @description Adds a new message to the messages state
+   * @param {React.FormEvent<HTMLFormElement>} event Form event
+   * @returns {void}
+   */
+  const handleSendMessage = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (!newMessage.trim()) return;
     setMessages([
       ...messages,
@@ -21,6 +42,11 @@ export default function Messages() {
     ]);
     setNewMessage("");
   };
+
+  const fetchMessages = async () => {
+    console.log("Fetching messages");
+  };
+
   return (
     <Stack
       direction="column"

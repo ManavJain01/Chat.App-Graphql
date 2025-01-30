@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useAppDispatch } from "../store/store";
 import { useSignUp } from "../graphql/auth.graphql";
 
 const SignUp = () => {
@@ -32,6 +31,8 @@ const SignUp = () => {
       const { data } = await signUp({
         variables: { name, email, password, role },
       });
+
+      console.log("data: ", data);
 
       toast.success("Sign Up Successful");
     } catch (err) {

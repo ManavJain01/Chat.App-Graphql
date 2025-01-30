@@ -5,6 +5,8 @@ const authResolvers = {
     Mutation: {
       // Sign up mutation
         signUp: async (_: unknown, { name, email, password, role }: IUser) => {
+          console.log("in resolver: ", name, email, password, role);
+            
           return await authService.signupUser({ name, email, password, role } as IUser)
         },
 

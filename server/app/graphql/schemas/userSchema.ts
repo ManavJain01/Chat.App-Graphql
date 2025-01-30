@@ -2,16 +2,20 @@ import { gql } from 'apollo-server-express';
 
 export const userSchema = gql`
   type User {
-    id: ID!
+    _id: ID!
     name: String!
     email: String!
+    role: String!
   }
 
-  extend type Query {
-    getUser(id: ID!): User
+  type Query {
+    users: [User]
+    user(id: ID!): User
   }
 
-  extend type Mutation {
-    createUser(name: String!, email: String!): User
+  type Mutation {
+    createUser(name: String!, email: String!, role: String!): User
+    updateUser(id: ID!, name: String, email: String, role: String): User
+    deleteUser(id: ID!): User
   }
 `;
