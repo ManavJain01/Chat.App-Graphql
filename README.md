@@ -1,53 +1,104 @@
-# Drawing App
+# Chat Application
 
-A simple and interactive drawing application that allows users to unleash their creativity by drawing shapes, adding text, and filling them with vibrant colors.
+## Overview
 
-## Authors
-
-- Manav Jain
-
-## Description
-
-The Drawing App is a user-friendly platform where users can create digital art effortlessly. Whether you're looking to sketch, doodle, or create professional designs, this app provides the tools to bring your ideas to life.
+This is a real-time chat application that leverages GraphQL for efficient data fetching and subscriptions for real-time communication between users. The application supports user authentication, one-to-one chat, media sharing, and status updates.
 
 ## Features
 
-- **Draw Shapes**: Create various shapes like circles, rectangles, lines, and more.
-- **Fill Colors**: Add colors to shapes or areas of your drawing to make it vibrant and eye-catching.
-- **Add Text**: Insert customizable text to annotate or enhance your drawings.
+- **User Authentication**
 
-## How to Use
+  - Signup and Login functionality
+  - Secure authentication using JWT (or any preferred method)
 
-1. **Start Drawing**: Select the drawing tool from the toolbar and draw directly on the canvas.
-2. **Fill Colors**: Choose a color from the palette and click on the shape or area you want to fill.
-3. **Add Text**: Use the text tool to type on the canvas. Customize the font, size, and color of your text.
+- **Real-time Chat**
+
+  - One-to-one messaging
+  - GraphQL subscriptions for real-time updates
+  - Media sharing support (images, videos, documents, etc.)
+
+- **User Status Management**
+  - Typing Indicator
+  - Online/Offline Status
+  - Message Read/Unread Status
+  - Message Delivered Status
 
 ## Tech Stack
 
-- **Frontend**: React, Typescript, Material UI
-- **Canvas API** for drawing and rendering.
+- **Frontend**
 
-## Installation
+  - React.js (or any preferred frontend framework)
+  - Apollo Client for GraphQL
+  - Material UI (or any preferred styling framework)
+
+- **Backend**
+  - Node.js with Express
+  - GraphQL with Apollo Server
+  - MongoDB with Mongoose (or any preferred database)
+  - Cloud Storage (for media file handling, e.g., AWS S3, Firebase Storage)
+
+## Installation and Setup
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+- Node.js (>=16.x)
+- MongoDB (local or cloud-based, e.g., MongoDB Atlas)
+
+### Backend Setup
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/ManavJain01/Drawing-App
+   ```sh
+   git clone https://github.com/ManavJain01/Chat.App-Graphql.git
+   cd chat-app/server
    ```
-2. Navigate to the project directory:
-   ```bash
-   cd drawing-app
+2. Install dependencies:
+   ```sh
+   npm install
    ```
-3. Open `index.html` in your browser or run a local server if applicable:
-   ```bash
+3. Create a `.env` file in the `server` directory and configure the following:
+   ```env
+   MONGO_URI=your_mongodb_connection_string
+   JWT_SECRET=your_secret_key
+   ```
+4. Start the backend server:
+   ```sh
    npm start
    ```
 
+### Frontend Setup
+
+1. Navigate to the client folder:
+   ```sh
+   cd ../client
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Start the frontend server:
+   ```sh
+   npm run dev
+   ```
+
+## Usage
+
+- Sign up or log in to the application.
+- Start a conversation with another user.
+- Send text messages or media files.
+- Observe real-time updates such as typing indicators, message statuses, and online presence.
+
 ## Future Enhancements
 
-- Undo and redo functionality.
-- Save and export drawings as images.
-- Additional drawing tools like brushes and erasers.
-- Integration with cloud storage for saving projects.
+- Group chat functionality
+- Push notifications for new messages
+- Message reactions and emojis
+- End-to-end encryption
+
+## Contributing
+
+Contributions are welcome! Feel free to fork the repository and submit a pull request.
 
 ## License
 
