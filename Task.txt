@@ -1,0 +1,11 @@
+Chat application
+    * Implement graphql
+    * User Login and Signup
+    * Use graphql subscription to send data from BE to FE instead of socket.io/websocket
+    * One to One chat in real time
+    * Can send media as well.
+    * Maintain all type of status here
+        * Typing
+        * Online
+        * Read/Unread
+        * Delivered
