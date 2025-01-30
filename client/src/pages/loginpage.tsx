@@ -1,39 +1,26 @@
 import React, { useState } from "react";
-import { useLoginMutation } from "../services/auth.api";
-import { setTokens, setUser } from "../store/reducers/authReducer";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { useAppDispatch } from "../store/store";
 import ForgotPassword from "../components/Auth/ForgotPassword";
+import { useLogin } from "../graphql/auth.graphql";
 
 const Login = () => {
+  // API Calls
+  const [loginRequest, { loading: isLoading, error }] = useLogin();
+
+  // useState
   const [enableForgotPass, setEnableForgotPass] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loginRequest, { isLoading, error }] = useLoginMutation();
-  const dispatch = useAppDispatch();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const data = await loginRequest({ email, password }).unwrap();
+      const { data } = await loginRequest({ variables: { email, password } });
 
-      dispatch(
-        setTokens({
-          accessToken: data.data.accessToken,
-          refreshToken: data.data.refreshToken,
-        })
-      );
+      console.log("data: ", data);
 
-      dispatch(
-        setUser({
-          id: data.data.user._id,
-          name: data.data.user.name,
-          email: data.data.user.email,
-          role: data.data.user.role,
-        })
-      );
       toast.success("Login Successful");
     } catch (err) {
       console.error(err);

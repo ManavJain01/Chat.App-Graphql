@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useSignUpMutation } from "../services/auth.api";
-import { setTokens, setUser } from "../store/reducers/authReducer";
 import {
   Box,
   Button,
@@ -15,35 +13,25 @@ import {
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAppDispatch } from "../store/store";
+import { useSignUp } from "../graphql/auth.graphql";
 
 const SignUp = () => {
+  // Api Calls
+  const [signUp, { loading: isLoading, error }] = useSignUp();
+
+  // useState
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("USER"); // Default role is USER
-  const [signUp, { isLoading, error }] = useSignUpMutation();
-  const dispatch = useAppDispatch();
 
+  // Functions
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const data = await signUp({ name, email, password, role }).unwrap();
-
-      dispatch(
-        setTokens({
-          accessToken: data.data.accessToken,
-          refreshToken: data.data.refreshToken,
-        })
-      );
-
-      dispatch(
-        setUser({
-          id: data.data.user._id,
-          name: data.data.user.name,
-          email: data.data.user.email,
-          role: data.data.user.role,
-        })
-      );
+      const { data } = await signUp({
+        variables: { name, email, password, role },
+      });
 
       toast.success("Sign Up Successful");
     } catch (err) {

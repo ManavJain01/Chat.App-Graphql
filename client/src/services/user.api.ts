@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQueryWithReauth, UserResponse } from './api';
+import { baseQueryWithReauth } from './api';
 
 export const apiUser = createApi({
   reducerPath: "apiUser",
@@ -44,18 +44,11 @@ export const apiUser = createApi({
         url: `users/${id}`,
         method: 'DELETE'
       }),
-    }),
-    showManagers: builder.mutation({
-      query: () => ({
-        url: `users/managers`,
-        method: 'GET',
-      }),
-    }),
+    })
   }),
 });
 
 export const { 
   // Users
-  useShowUsersMutation, useCreateUserMutation, useGetUserByIdMutation, useEditUserMutation, useUpdateUserMutation, useDeleteUserMutation,
-  useShowManagersMutation,
+  useShowUsersMutation, useCreateUserMutation, useGetUserByIdMutation, useEditUserMutation, useUpdateUserMutation, useDeleteUserMutation
  } = apiUser;

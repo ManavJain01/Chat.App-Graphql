@@ -1,4 +1,4 @@
-import express, { type Express, type Request, type Response } from "express";
+import express, { type Express, type Request, type Response, Application } from "express";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 import http from "http";
@@ -12,6 +12,10 @@ import { type IUser } from "./app/user/user.dto";
 import errorHandler from "./app/common/middleware/error-handler.middleware";
 import routes from "./app/routes";
 import { apiLimiter } from './app/common/middleware/rate-limiter.middlware';
+
+import { ApolloServer } from 'apollo-server-express';
+import typeDefs from './app/graphql/schemas/schema';  // Import your GraphQL schema
+import resolvers from './app/graphql/resolvers/resolvers';  // Import your GraphQL resolvers
 
 loadConfig();
 
@@ -40,6 +44,12 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(morgan("dev"));
 
+// Initialize Apollo Server for GraphQL
+const apolloServer = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+
 const initApp = async (): Promise<void> => {
   // init mongodb
   await initDB();
@@ -54,10 +64,18 @@ const initApp = async (): Promise<void> => {
     res.send({ status: "ok" });
   });
 
+  // Apply GraphQL middleware at /graphql endpoint
+  await apolloServer.start();
+
+  // Cast app to the correct Application type for ApolloServer
+  (apolloServer as any).applyMiddleware({ app: app as Application });
+  
   // error handler
   app.use(errorHandler);
+
   http.createServer(app).listen(port, () => {
-    console.log("Server is running on port", port);
+    console.log("Server is running on port: ", port);
+    console.log(`GraphQL endpoint at http://localhost:${port}/graphql`);
   });
 };
 
