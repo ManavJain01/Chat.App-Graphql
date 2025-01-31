@@ -2,8 +2,14 @@ import authResolvers from "./authResolvers";
 import userResolvers from "./userResolvers";
 
 const resolvers = {
-  ...authResolvers,   // Spread auth resolvers
-  ...userResolvers,  // Spread user resolvers
+  Query: {
+    ...authResolvers.Query,
+    ...userResolvers.Query,
+  },
+  Mutation: {
+    ...authResolvers.Mutation,
+    ...userResolvers.Mutation,
+  },
 };
 
 export default resolvers;

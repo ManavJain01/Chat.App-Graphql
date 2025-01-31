@@ -1,25 +1,49 @@
-import { User } from "../../user/user.schema";
+import { IUser } from "../../user/user.dto";
+import * as userService from "../../user/user.service"
 
 const userResolvers = {
   Query: {
-    users: async () => {
-      return await User.find();
+    users: async () => {      
+      return await userService.getAllUser();
     },
     user: async (_: any, { id }: { id: string }) => {
-      return await User.findById(id);
+      console.log("in resolver");
+      
+      if (!id) {
+        throw new Error("User ID is required");
+      }
+      
+      const user = await userService.getUserById(id);
+      if (!user) {
+        throw new Error("User not found");
+      }
+      
+      return user;
     },
+    // user: async (_: any, { id }: { id: string }) => {
+    //   console.log("in resolver");
+      
+    //   if (!id) {
+    //     throw new Error("User ID is required");
+    //   }
+      
+    //   const user = await userService.getUserById(id);
+    //   if (!user) {
+    //     throw new Error("User not found");
+    //   }
+      
+    //   return user;
+    // },
   },
   Mutation: {
     createUser: async (_: any, { name, email, role }: { name: string; email: string; role: string }) => {
-      const user = new User({ name, email, role });
-      await user.save();
-      return user;
+      return await userService.createUser({ name, email, role } as IUser);
     },
     updateUser: async (_: any, { id, name, email, role }: { id: string; name?: string; email?: string; role?: string }) => {
-      return await User.findByIdAndUpdate(id, { name, email, role }, { new: true });
+      return await userService.updateUser(id, { name, email, role } as IUser);
     },
     deleteUser: async (_: any, { id }: { id: string }) => {
-      return await User.findByIdAndDelete(id);
+      return await userService.deleteUser(id);
     },
   },
 };

@@ -33,10 +33,9 @@ export const useGetUsers = () => {
     return useQuery(GET_USERS);
 };
 
-// Query to get a single user by ID
 const GET_USER_BY_ID = gql`
-  query getUserById($id: String!) {
-    user(id: $id) {
+  query user($id: String!) {
+    user(id: "679c48a5174aefb555235d9c") {
       _id
       name
       email
@@ -45,9 +44,11 @@ const GET_USER_BY_ID = gql`
   }
 `;
 
-export const useGetUserById = () => {
-    return useQuery(GET_USER_BY_ID);
-  };
+export const useGetUserById = (id: string) => {
+  console.log("in graphql:", id);
+  
+  return useQuery(GET_USER_BY_ID);
+};
 
 // Mutation to update an existing user
 const UPDATE_USER = gql`

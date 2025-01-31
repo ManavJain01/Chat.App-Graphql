@@ -26,7 +26,7 @@ const App: React.FC = () => {
   const authData = useAppSelector((store) => store.auth);
 
   // useState
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(localStorage.getItem("accessToken") ? true : false);
 
   // useEffect
   useEffect(() => {
