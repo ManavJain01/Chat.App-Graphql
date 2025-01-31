@@ -34,8 +34,8 @@ export const useGetUsers = () => {
 };
 
 const GET_USER_BY_ID = gql`
-  query user($id: String!) {
-    user(id: "679c48a5174aefb555235d9c") {
+  query user {
+    user(id: $id) {
       _id
       name
       email
@@ -45,9 +45,10 @@ const GET_USER_BY_ID = gql`
 `;
 
 export const useGetUserById = (id: string) => {
-  console.log("in graphql:", id);
-  
-  return useQuery(GET_USER_BY_ID);
+  return useQuery(GET_USER_BY_ID, {
+    variables: { id }, // Pass the `id` as a variable
+    skip: !id, // Skip the query if `id` is not provided
+  });
 };
 
 // Mutation to update an existing user

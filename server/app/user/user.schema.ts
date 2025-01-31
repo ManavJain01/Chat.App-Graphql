@@ -1,6 +1,6 @@
 import mongoose, { model } from "mongoose";
 import { type IUser } from "./user.dto";
-import * as authService from "../auth/auth.service"
+import * as authService from "../Auth/auth.service"
 import { userEnum } from "./user.dto";
 
 const Schema = mongoose.Schema;

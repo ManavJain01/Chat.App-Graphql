@@ -30,7 +30,6 @@ export default function ChatArea() {
     if (data?.user) {
       setFriend(data.user);
     }
-    console.log("data:", data);
   }, [data]);
 
   useEffect(() => {

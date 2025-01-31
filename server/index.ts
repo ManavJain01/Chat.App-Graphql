@@ -10,12 +10,11 @@ import { initPassport } from "./app/common/services/passport-jwt.service";
 import { loadConfig } from "./app/common/helper/config.hepler";
 import { type IUser } from "./app/user/user.dto";
 import errorHandler from "./app/common/middleware/error-handler.middleware";
-import routes from "./app/routes";
 import { apiLimiter } from './app/common/middleware/rate-limiter.middlware';
 
 import { ApolloServer } from 'apollo-server-express';
-import typeDefs from './app/graphql/schemas/schema';  // Import your GraphQL schema
-import resolvers from './app/graphql/resolvers/resolvers';  // Import your GraphQL resolvers
+import typeDefs from './app/graphql/schema';  // Import your GraphQL schema
+import resolvers from './app/graphql/resolvers';  // Import your GraphQL resolvers
 
 loadConfig();
 
@@ -56,9 +55,6 @@ const initApp = async (): Promise<void> => {
 
   // passport init
   initPassport();
-
-  // set base path to /api
-  app.use("/api", apiLimiter, routes);
 
   app.get("/", apiLimiter, (req: Request, res: Response) => {
     res.send({ status: "ok" });

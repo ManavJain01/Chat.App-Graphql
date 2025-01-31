@@ -1,5 +1,5 @@
-import authResolvers from "./authResolvers";
-import userResolvers from "./userResolvers";
+import authResolvers from "../Auth/auth.graphql.resolvers";
+import userResolvers from "../user/user.graphql.resolvers";
 
 const resolvers = {
   Query: {

@@ -1,6 +1,6 @@
 import { mergeTypeDefs } from '@graphql-tools/merge';
-import { userSchema } from './userSchema';
-import authSchema from './authSchema';
+import { userSchema } from '../user/user.graphql.schema';
+import authSchema from '../Auth/auth.graphql.schema';
 
 const typeDefs = mergeTypeDefs([authSchema, userSchema]);
 

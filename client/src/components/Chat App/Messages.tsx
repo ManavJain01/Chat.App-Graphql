@@ -69,9 +69,9 @@ export default function Messages() {
           variant="outlined"
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
+          onKeyDown={(e) => e.key === "Enter" && handleSendMessage(e as unknown as React.FormEvent<HTMLFormElement>)}
         />
-        <IconButton onClick={handleSendMessage} className="ml-2">
+        <IconButton onClick={(e) => handleSendMessage(e as unknown as React.FormEvent<HTMLFormElement>)} className="ml-2">
           <SendIcon color="primary" />
         </IconButton>
       </Stack>

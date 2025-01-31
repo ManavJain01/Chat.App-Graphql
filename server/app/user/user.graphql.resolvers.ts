@@ -1,5 +1,5 @@
-import { IUser } from "../../user/user.dto";
-import * as userService from "../../user/user.service"
+import { IUser } from "./user.dto";
+import * as userService from "./user.service"
 
 const userResolvers = {
   Query: {
