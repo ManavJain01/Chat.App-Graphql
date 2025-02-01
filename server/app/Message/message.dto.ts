@@ -1,7 +1,9 @@
+import mongoose from "mongoose";
 import { type BaseSchema } from "../common/dto/base.dto";
 
 export interface IMessage extends BaseSchema {
-    sender_id: object;
-    receiver_id: object;
-    message: string;
+    chatId: mongoose.Types.ObjectId;
+    sender: mongoose.Types.ObjectId;
+    text: string;
+    timestamp: Date;
 }

@@ -28,18 +28,18 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<{ id: string, name: string; email: string; role: string; }>) => {
-      if(!action.payload.id && !action.payload.name && !action.payload.email && !action.payload.role){
+    setUser: (state, action: PayloadAction<{ _id: string, name: string; email: string; role: string; }>) => {
+      if(!action.payload._id && !action.payload.name && !action.payload.email && !action.payload.role){
         toast.error("User Credentials not found");
         resetTokens();
         throw new Error("User Credentials not found!!!");
       }
 
-      localStorage.setItem("id", action.payload.id);
+      localStorage.setItem("id", action.payload._id);
       localStorage.setItem("name", action.payload.name);
       localStorage.setItem("email", action.payload.email);
       localStorage.setItem("role", action.payload.role);
-      state.id = action.payload.id;
+      state.id = action.payload._id;
       state.name = action.payload.name;
       state.email = action.payload.email;
       state.role = action.payload.role;

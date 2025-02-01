@@ -1,8 +1,10 @@
 import { Typography, Avatar, Stack } from "@mui/material";
 import { motion } from "framer-motion";
 import { useGetUsers } from "../../graphql/user.graphql";
+import { useGetFriends } from "../../graphql/chat.graphql"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../store/store";
 
 // Define the User type
 interface User {
@@ -13,18 +15,26 @@ interface User {
 
 // Sidebar Component
 export default function Sidebar() {
+  // useSelector
+  const authData = useAppSelector(store => store.auth);
+  const userId = authData.id;
+
   // API Call
   const { data, loading: isLoading, error } = useGetUsers();
+  const { data: allFriends } = useGetFriends(userId);
+  
+  // useNavigate
   const navigate = useNavigate();
-  // useState with correct type
+  
+  // useState
   const [friends, setFriends] = useState<User[]>([]);
-
+  
   // useEffect to update state when data changes
   useEffect(() => {
-    if (data?.users) {
-      setFriends(data.users as User[]); // Type assertion
+    if (allFriends?.getFriends) {
+      setFriends(allFriends.getFriends as User[] || []); // Type assertion
     }
-  }, [data]);
+  }, [allFriends]);
 
   if (isLoading) return <Typography>Loading...</Typography>;
   if (error) return <Typography>Error: {error.message}</Typography>;

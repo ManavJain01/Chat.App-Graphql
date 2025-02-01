@@ -4,17 +4,10 @@ import { type IMessage } from "./message.dto";
 const Schema = mongoose.Schema;
 
 const MessageSchema = new Schema<IMessage>({
-    sender_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
-    },
-    receiver_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
-    },
-    message: {
-        type: String,
-    },
+    chatId: { type: Schema.Types.ObjectId, ref: "Chat", required: true },
+    sender: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    text: { type: String, required: true },
+    timestamp: { type: Date, default: Date.now },
 }, { timestamps: true });
 
 

@@ -7,8 +7,6 @@ const userResolvers = {
       return await userService.getAllUser();
     },
     user: async (_: any, { id }: { id: string }) => {
-      console.log("in resolver");
-      
       if (!id) {
         throw new Error("User ID is required");
       }
@@ -20,20 +18,6 @@ const userResolvers = {
       
       return user;
     },
-    // user: async (_: any, { id }: { id: string }) => {
-    //   console.log("in resolver");
-      
-    //   if (!id) {
-    //     throw new Error("User ID is required");
-    //   }
-      
-    //   const user = await userService.getUserById(id);
-    //   if (!user) {
-    //     throw new Error("User not found");
-    //   }
-      
-    //   return user;
-    // },
   },
   Mutation: {
     createUser: async (_: any, { name, email, role }: { name: string; email: string; role: string }) => {

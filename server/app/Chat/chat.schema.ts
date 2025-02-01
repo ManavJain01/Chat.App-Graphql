@@ -4,19 +4,8 @@ import { type IChat } from "./chat.dto";
 const Schema = mongoose.Schema;
 
 const ChatSchema = new Schema<IChat>({
-    participants: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User"
-        }
-    ],
-    messages: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Message",
-            default: []
-        }
-    ]
+    participants: [{ type: Schema.Types.ObjectId, ref: "User", required: true }],
+    lastMessage: { type: Schema.Types.ObjectId, ref: "Message" },
 }, { timestamps: true });
 
 
